@@ -1,0 +1,24 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  width: 80%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.done {
+  color : grey;
+  text-decoration: line-through;
+}
+
+.important {
+  background-color: #FF7700; //orange
+  font-weight: bold;
+}
+
+input:focus {
+  background-color: #BBBBFF; //lavande
+}
