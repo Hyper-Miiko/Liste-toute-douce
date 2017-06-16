@@ -1,58 +1,78 @@
 * {
+  list-style: none;
   margin: 0px;
   padding: 0px;
-  list-style: none;
 }
-  body {
-    width: 80%;
-    margin: auto;
-    margin-top: 50px;
+body {
+  width: 80%;
+  min-width: 800px;
+  margin: auto;
+  margin-top: 30px;
+  background-color: black;
+}
+  #barreSaisie {
   }
-    #barreSaisie {
-      height: 20px;
-      margin-bottom: 10px;
+    li {
+      height: 31px;
+      margin-bottom: 2px;
     }
-      #barreSaisie * {
-        height: 100%;
-      }
-      #barreSaisie button {
-        width: 39%;
-      }
-        button {
-          width: 13%;
-        }
-        input {
-          background-color: #8888FF;
-          width: 55%;
-          height: 20px;
-          border-style: ridge;
-          border-color: #6666FF;
-        }
-        input:first-child {
-          background-color: #8888FF;
-          width: 20px;
-          border-radius: 100%;
-          text-align: center;
-        }
-        input:first-child::-webkit-input-placeholder {
-          color: black;
-        }
-        input:first-child::-moz-placeholder {
-          color: black;
-        }
-        input:focus {
-          background-color: #BBBBFF;
-        }
-          [important="true"] {
-            background-color: #FF7700;
-          }
-          [important="true"]:focus {
-            background-color: #FFAA33;
-          }
-          [etat="en cours"] {
-          font-weight: bold;
-          }
-          [etat="fait"] {
-            text-decoration: line-through;
-            color: grey;
-          }
+    input {
+      height: 25px;
+      width: 85%;
+      background-color: #F0E0F0;
+      border-style: ridge;
+      border-width: 3px;
+      border-color: #00FFFF;
+      padding-left: 5px;
+      margin-right: 3px;
+    }
+    input:focus {
+      background-color: #D0C0D0;
+    }
+    input:first-child {
+      width: 25px;
+      border-radius: 100%;
+      text-align: center;
+      padding-left: 0px;
+    }
+    button {
+      position: relative;
+      top: 7px;
+      height: 31px;
+      width: 31px;
+      background-color: #F0E0F0;
+      border-style: outset;
+      border-width: 3px;
+      border-color: #00FFFF;
+      color: black;
+    }
+    button:hover {
+      background-color: #D0C0D0;
+    }
+    button:active {
+      border-style: inset;
+    }
+  #menuListe {
+    height: 31px;
+    margin-bottom: 8px;
+  }
+    #menuListe button {
+      transform: translateY(-13px);
+      width: 200px;
+      margin-left: 5px;
+    }
+    #menuListe button:last-child {
+      transform: translateY(0);
+      width: 31px;
+    }
+[etat="à faire"] {
+  color: #333333;
+}
+[etat="en cours"] {
+  color: black;
+  font-weight: bold;
+}
+[etat="fait"] {
+  text-decoration: line-through;
+  color: #00AA00;
+}
