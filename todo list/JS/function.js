@@ -1,15 +1,15 @@
-/*/====================[NOUVELLE LISTE]====================//
+//====================[NOUVELLE LISTE]====================//
 function nouvelleListe() {
-
+	alert("Bonjour, je ne sert à rien !")
 }
-//--------------------(nouvelle liste)--------------------/*/
+//--------------------(nouvelle liste)--------------------//
 
 //====================[NOUVELLE TACHE]====================//
 function nouvelleTache(key) {
   if (key.keyCode == 13 && INPUT_TACHE.value != "" || isNaN(key.keyCode)) { //Seule la touche "enter" ou un événement non-clavier (sourie) éxécute la fonction
     ajoutElements();
     classement();
-    rafraichissement();
+    rafraichissementListe();
     sauvegardeLocale(true);
   }
 }
@@ -26,7 +26,7 @@ function ajoutElements() {
 function classement() {
   for (var i = 0; i < arrayListe.length; i++) { //On parcourt le tableau autant de choix que ça taille pour décaller les éléments dans le désordre 1 par 1
     for (var j= 0; j < arrayListe.length-1; j++) {
-      if (arrayListe[j].index > arrayListe[j+1].index) { //Si la premier valeur est plus haute que la deuxiéme on les inverses
+      if (arrayListe[j].index > arrayListe[j+1].index) { //Si la première valeur est plus haute que la deuxiéme on les inverses
         var temp = arrayListe[j];
         arrayListe[j] = arrayListe[j+1];
         arrayListe[j+1] = temp;
@@ -41,7 +41,7 @@ function classement() {
 //--------------------(classement)--------------------//
 
 //====================[RAFRAICHISSEMENT]====================//
-function rafraichissement() { //On utilise le tableau pour affiche la liste
+function rafraichissementListe() { //On utilise le tableau pour affiche la liste
   while (UL_PRINCIPAL.firstChild) { //On supprime la liste tant qu'il reste un élément de liste
     UL_PRINCIPAL.removeChild(UL_PRINCIPAL.firstChild);
   }
@@ -73,9 +73,11 @@ function ajoutIndex(i) {
 //====================[CHANGEMENT D'ORDRE]====================//
 function changeOrdre(key) {
   if (key.keyCode == 13) { //Si il s'agit bien de la touche (enter)
-    arrayListe[nbrAine(this.parentNode)].index = parseInt(this.value)-2; //L'élément va aprés l'élément précédant (-2) de l'index écrit
+  	console.log(this.value+" | "+(nbrAine(this.parentNode)-1));
+    if(this.value == nbrAine(this.parentNode) || this.value == (nbrAine(this.parentNode)-1)) this.value-=2; //Gestion de bug bidouillé
+    arrayListe[nbrAine(this.parentNode)].index = parseInt(this.value);
     classement();
-    rafraichissement();
+    rafraichissementListe();
     sauvegardeLocale(true);
   }
 }
@@ -93,7 +95,7 @@ function ajoutLibelle(i) {
 
 //====================[CHANGEMENT DE LIBELLE]====================//
 function changeLibelle(key) {
-  if (key.keyCode == 13 || isNaN(key.keyCode)) { //Si il s'agit bien de la touche (enter)
+  if (key.keyCode == 13) { //Si il s'agit bien de la touche (enter)
     arrayListe[nbrAine(this.parentNode)].value = this.value;
     sauvegardeLocale(true);
   }
@@ -141,7 +143,7 @@ function toggleAttribute() {
       else arrayListe[nbrAine(this.parentNode)].etat = "à faire";
       break;
   }
-  rafraichissement();
+  rafraichissementListe();
   sauvegardeLocale(false);
 }
 //--------------------(ajout/retrait d'attributs)--------------------//
@@ -160,7 +162,7 @@ function supprimer() {
   arrayListe.splice(nbrAine(this.parentNode), 1);
   this.parentNode.remove();
   classement();
-  rafraichissement();
+  rafraichissementListe();
   sauvegardeLocale(true);
 }
 //--------------------(suppression)--------------------//
@@ -196,7 +198,7 @@ function chargementLocale() {
 //====================[SUPPRESSION TOTALE]====================//
 function supprimerTous() {
   arrayListe = [];
-  rafraichissement();
+  rafraichissementListe();
   sauvegardeLocale(true);
 }
 //--------------------(suppression totale)--------------------//
@@ -206,7 +208,7 @@ function undo() {
   if (ctrl_z.length > 1) {
     ctrl_z.splice(ctrl_z.length-1, 1);
     arrayListe = ctrl_z[ctrl_z.length-1];
-    rafraichissement();
+    rafraichissementListe();
     sauvegardeLocale(false);
   }
 }

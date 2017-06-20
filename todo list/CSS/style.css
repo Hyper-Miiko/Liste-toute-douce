@@ -20,6 +20,7 @@ body {
       height: 25px;
       width: 85%;
       background-color: #F0E0F0;
+      color: #000;
       border-style: ridge;
       border-width: 3px;
       border-color: #00FFFF;
@@ -28,6 +29,9 @@ body {
     }
     input:focus {
       background-color: #D0C0D0;
+    }
+    input::placeholder {
+      color: #000;
     }
     input:first-child {
       width: 25px;
